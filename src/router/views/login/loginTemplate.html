@@ -1,0 +1,33 @@
+<b-container class="bv-example-row">
+  <div id="login">
+    <b-card title="Sign In to continue" tag="article" class="mb-2">
+      <b-card-text>
+        <b-form-group label="Email" label-for="email">
+          <b-form-input
+            id="email"
+            v-model="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </b-card-text>
+
+      <b-card-text>
+        <b-form-group label="Password" label-for="password">
+          <b-form-input
+            id="password"
+            v-model="password"
+            type="password"
+            placeholder="Enter"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </b-card-text>
+
+      <b-button href="#" variant="outline-primary" @click="login()"
+        >Sign In</b-button
+      >
+    </b-card>
+  </div>
+</b-container>

@@ -1,0 +1,17 @@
+#login {
+  width: 87vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // color: white;
+  & .card {
+    width: 40%;
+    height: 40%;
+    & .card-title {
+      border-bottom: 1px solid #efefef;
+      padding-bottom: 2%;
+      text-transform: uppercase;
+    }
+  }
+}

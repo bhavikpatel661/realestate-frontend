@@ -1,0 +1,38 @@
+<div>
+  <b-table
+    bordered
+    hover
+    :items="arrCustomers"
+    :per-page="perPage"
+    :current-page="currentPage"
+    :fields="fields"
+    :sort-by.sync="sortBy"
+    sort-icon-left
+    responsive="sm"
+    sticky-header
+    head-variant="light"
+  >
+    <template #cell(action)="arrCustomers">
+      <b-button
+        size="sm"
+        variant="outline-primary"
+        @click="editCustomer(arrCustomers.item.id)"
+        >Edit</b-button
+      >
+      &nbsp;
+      <b-button
+        size="sm"
+        variant="outline-primary"
+        @click="changeCustomerType(arrCustomers.item.id)"
+        >Convert to Customer</b-button
+      >
+    </template>
+  </b-table>
+
+  <b-pagination
+    v-model="currentPage"
+    :total-rows="rows"
+    :per-page="perPage"
+    aria-controls="my-table"
+  ></b-pagination>
+</div>

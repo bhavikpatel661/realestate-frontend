@@ -1,38 +1,64 @@
-<div>
-  <b-table
-    bordered
-    hover
-    :items="arrCustomers"
-    :per-page="perPage"
-    :current-page="currentPage"
-    :fields="fields"
-    :sort-by.sync="sortBy"
-    sort-icon-left
-    responsive="sm"
-    sticky-header
-    head-variant="light"
+<div class="row">
+  <div
+    class="table-item"
+    v-bind:class="{'col-lg-12' : selectedCustomer == -1, 'col-lg-9' : selectedCustomer != -1}"
   >
-    <template #cell(action)="arrCustomers">
-      <b-button
-        size="sm"
-        variant="outline-primary"
-        @click="editCustomer(arrCustomers.item.id)"
-        >Edit</b-button
-      >
-      &nbsp;
-      <b-button
-        size="sm"
-        variant="outline-primary"
-        @click="changeCustomerType(arrCustomers.item.id)"
-        >Convert to Customer</b-button
-      >
-    </template>
-  </b-table>
+    <b-table
+      :items="arrCustomers"
+      :per-page="perPage"
+      :current-page="currentPage"
+      :fields="fields"
+      :sort-by.sync="sortBy"
+      sort-icon-left
+      sticky-header
+    >
+      <template #cell(stage)="arrCustomers">
+        <b-badge v-if="arrCustomers.item.stage === 'lead'" variant="primary"
+          >{{arrCustomers.item.stage}}</b-badge
+        >
 
-  <b-pagination
-    v-model="currentPage"
-    :total-rows="rows"
-    :per-page="perPage"
-    aria-controls="my-table"
-  ></b-pagination>
+        <b-badge
+          v-else-if="arrCustomers.item.stage === 'customer'"
+          variant="success"
+          >{{arrCustomers.item.stage}}</b-badge
+        >
+        <b-badge v-else variant="secondary"
+          >{{arrCustomers.item.stage}}</b-badge
+        >
+      </template>
+      <template #cell(action)="arrCustomers">
+        <b-button
+          size="sm"
+          variant="outline-primary"
+          @click="editCustomer(arrCustomers.item.id)"
+          >Edit</b-button
+        >
+        &nbsp;
+        <b-button
+          size="sm"
+          variant="outline-primary"
+          @click="changeCustomerType(arrCustomers.item.id)"
+          v-if="arrCustomers.item.stage !== 'customer'"
+          >Convert to Customer</b-button
+        >
+        &nbsp;
+        <b-button
+          size="sm"
+          variant="outline-primary"
+          @click="viewTimeline(arrCustomers.item.id)"
+          >Timeline</b-button
+        >
+      </template>
+    </b-table>
+
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+    ></b-pagination>
+  </div>
+  <div class="timeline col-lg-3" v-if="selectedCustomer != -1">
+    <Timeline></Timeline>
+  </div>
 </div>

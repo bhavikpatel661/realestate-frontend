@@ -19,6 +19,7 @@ export default {
     // Try to log the user in with the username
     // and password they provided.
     login() {
+      console.log('')
       return this.logIn({
         username: this.email,
         password: this.password,

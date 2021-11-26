@@ -42,6 +42,7 @@ export const actions = {
 
   // Logs out the current user.
   logOut({ commit, dispatch }) {
+    console.log('logour is calld')
     commit('SET_CURRENT_USER', null)
   },
 

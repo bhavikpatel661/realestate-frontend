@@ -1,5 +1,6 @@
 <script>
 import appConfig from '@src/app.config'
+import { authComputed } from './state/helpers'
 
 export default {
   page: {
@@ -7,6 +8,16 @@ export default {
     titleTemplate(title) {
       title = typeof title === 'function' ? title(this.$store) : title
       return title ? `${title} | ${appConfig.title}` : appConfig.title
+    },
+  },
+  computed: {
+    ...authComputed,
+  },
+  watch: {
+    loggedIn(newValue) {
+      if (!newValue) {
+        this.$router.push('/')
+      }
     },
   },
 }
@@ -86,6 +97,9 @@ h6 {
 
 #nprogress .bar {
   background: $color-link-text;
+}
+#app {
+  height: 100vh;
 }
 
 @import 'src/styles/main';

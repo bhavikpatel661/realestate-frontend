@@ -2,8 +2,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import _ from 'lodash'
+import Timeline from '../timeline/timeline'
 export default {
   name: 'ListCustomer',
+  components: {
+    Timeline,
+  },
   data() {
     return {
       perPage: 5,
@@ -19,6 +24,7 @@ export default {
         { key: 'action', sortable: false },
       ],
       dynamicFields: [],
+      selectedCustomer: -1,
     }
   },
   computed: {
@@ -67,6 +73,19 @@ export default {
         path: '/home/customer',
         query: { customerId: customerId },
       })
+    },
+    viewTimeline(customerId) {
+      this.selectedCustomer = customerId
+      _.forEach(this.arrCustomers, function(item) {
+        if (item.id === customerId) {
+          item._rowVariant = 'info'
+        } else {
+          item._rowVariant = ''
+        }
+      })
+
+      // deep clone to trigger the change
+      this.arrCustomers = _.cloneDeep(this.arrCustomers)
     },
   },
 }

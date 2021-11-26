@@ -29,6 +29,8 @@ export default {
     getCustomerDetails: {
       handler: function(newValue, oldValue) {
         this.customerForm = newValue
+        this.customerForm.date = newValue.createdAt
+        console.log(this.customerForm)
       },
     },
   },

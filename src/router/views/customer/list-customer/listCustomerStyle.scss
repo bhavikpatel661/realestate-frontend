@@ -1,3 +1,116 @@
 table .sr-only {
   display: none !important;
 }
+
+.badge-primary {
+  color: #fff;
+  background-color: #007bff;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25 em 0.4 em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25 rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+table {
+  // border: 1px solid #efefef;
+  & th,
+  td {
+    padding: 1rem !important;
+  }
+
+  & th div {
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+  }
+}
+
+.pagination {
+  justify-content: center;
+}
+// .table-item {
+//   -webkit-transition: width 1s ease-in-out;
+//   -moz-transition: width 1s ease-in-out;
+//   -o-transition: width 1s ease-in-out;
+//   transition: width 1s ease-in-out;
+// }
+// .table-item-selected {
+//   width: 70%;
+//   overflow: hidden;
+//   -webkit-transition: width 1s ease-in-out;
+//   -moz-transition: width 1s ease-in-out;
+//   -o-transition: width 1s ease-in-out;
+//   transition: width 1s ease-in-out;
+// }
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-striped-color: #737b8b;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-active-color: #737b8b;
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: #737b8b;
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #737b8b;
+  vertical-align: top;
+  border-color: #eee;
+}
+
+.table > thead {
+  vertical-align: bottom;
+}
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+.table thead th {
+  border-bottom: 0.0625rem solid #eee;
+  text-transform: capitalize;
+  font-size: 1.125rem;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.0313rem;
+  border-color: #f5f5f5 !important;
+}
+.table th,
+.table td {
+  border-color: #f5f5f5;
+  padding: 0.9375rem 0.625rem;
+}
+.table > tbody {
+  vertical-align: inherit;
+}
+
+.table tbody tr td {
+  vertical-align: middle;
+  border-color: #f5f5f5;
+}
+.table th,
+.table td {
+  border-color: #f5f5f5;
+  padding: 0.9375rem 0.625rem;
+}

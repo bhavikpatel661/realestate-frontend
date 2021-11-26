@@ -1,6 +1,6 @@
 <script>
 import Layout from '@layouts/main.vue'
-import { authMethods } from '@/state/helpers'
+import { authMethods, authComputed } from '@/state/helpers'
 import ListCustomer from './list-customer/listCustomer.vue'
 
 export default {
@@ -13,6 +13,9 @@ export default {
       customerStageFilter: 'lead',
       customerNameFilter: '',
     }
+  },
+  computed: {
+    ...authComputed,
   },
   watch: {
     data(newValue, oldValue) {},
@@ -46,54 +49,60 @@ export default {
 
 <template>
   <Layout>
-    <b-container>
-      <b-row>
-        <b-col class="col-lg-3">
-          <b-form-group label="Customer Type:" label-for="customerType">
-            <b-button
-              class="customer-type"
-              :variant="
-                customerStageFilter === 'lead' ? 'primary' : 'outline-primary'
-              "
-              @click="searchByCustomerType('lead')"
-              >Lead</b-button
-            >
-            <b-button
-              class="customer-type"
-              :variant="
-                customerStageFilter === 'customer'
-                  ? 'primary'
-                  : 'outline-primary'
-              "
-              @click="searchByCustomerType('customer')"
-              >Customer</b-button
-            >
-          </b-form-group>
-        </b-col>
+    <b-container class="h-100">
+      <div class="card">
+        <div class="card-body align-items-center justify-content-between">
+          <b-row>
+            <b-col class="col-lg-3">
+              <b-form-group label="Customer Type:" label-for="customerType">
+                <b-button
+                  class="customer-type"
+                  :variant="
+                    customerStageFilter === 'lead'
+                      ? 'primary'
+                      : 'outline-primary'
+                  "
+                  @click="searchByCustomerType('lead')"
+                  >Lead</b-button
+                >
+                <b-button
+                  class="customer-type"
+                  :variant="
+                    customerStageFilter === 'customer'
+                      ? 'primary'
+                      : 'outline-primary'
+                  "
+                  @click="searchByCustomerType('customer')"
+                  >Customer</b-button
+                >
+              </b-form-group>
+            </b-col>
 
-        <b-col class="col-lg-3">
-          <b-form-group label="Customer Name:" label-for="customerName">
-            <b-input
-              id="customer"
-              v-model="customerNameFilter"
-              type="text"
-              placeholder="Enter name"
-            />
-          </b-form-group>
-        </b-col>
+            <b-col class="col-lg-3">
+              <b-form-group label="Customer Name:" label-for="customerName">
+                <b-input
+                  id="customer"
+                  v-model="customerNameFilter"
+                  type="text"
+                  placeholder="Enter name"
+                />
+              </b-form-group>
+            </b-col>
 
-        <b-col class="col-lg-6">
-          <b-button
-            variant="outline-primary"
-            class="pull-right mt-4"
-            @click="addCustomer"
-            >Add Customer</b-button
-          >
-        </b-col>
-      </b-row>
-      <b-row>
-        <ListCustomer></ListCustomer>
-      </b-row>
+            <b-col class="col-lg-6">
+              <b-button
+                variant="outline-primary"
+                class="pull-right mt-4"
+                @click="addCustomer"
+                >Add Customer</b-button
+              >
+            </b-col>
+          </b-row>
+          <b-row>
+            <ListCustomer></ListCustomer>
+          </b-row>
+        </div>
+      </div>
     </b-container>
   </Layout>
 </template>

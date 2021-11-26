@@ -1,7 +1,7 @@
 <b-container id="addCustomer">
   <div>
     <b-card title="Add Customer">
-      <div class="">
+      <div id="customerForm">
         <b-form @submit="onSubmit" @rest="onReset">
           <b-row>
             <b-col>
@@ -83,7 +83,8 @@
           </b-row>
 
           <b-row>
-            <b-row>
+            <!-- <b-row> -->
+            <b-col :lg="4">
               <b-form-group label="Occupation" v-slot="{ occupation }">
                 <b-form-radio
                   v-model="customerForm.occupation"
@@ -110,11 +111,9 @@
                   Govt. Service</b-form-radio
                 >
               </b-form-group>
-            </b-row>
-          </b-row>
+            </b-col>
 
-          <b-row>
-            <b-row>
+            <b-col :lg="4">
               <b-form-group label="Requirement:" v-slot="{ requirement }">
                 <b-form-radio
                   v-model="customerForm.requirement"
@@ -141,11 +140,9 @@
                   5BHK</b-form-radio
                 >
               </b-form-group>
-            </b-row>
-          </b-row>
+            </b-col>
 
-          <b-row>
-            <b-row>
+            <b-col :lg="4">
               <b-form-group label="References:" v-slot="{ reference }">
                 <b-form-radio
                   v-model="customerForm.references"
@@ -188,8 +185,89 @@
                   Hoarding</b-form-radio
                 >
               </b-form-group>
-            </b-row>
+            </b-col>
+
+            <!-- </b-row> -->
           </b-row>
+
+          <!-- <b-row>
+            <b-row>
+            <b-form-group label="Requirement:" v-slot="{ requirement }">
+              <b-form-radio
+                v-model="customerForm.requirement"
+                :aria-describedby="requirement"
+                name="requirement"
+                value="2bhk"
+              >
+                2BHK</b-form-radio
+              >
+              <b-form-radio
+                v-model="customerForm.requirement"
+                :aria-describedby="requirement"
+                name="requirement"
+                value="3bhk"
+              >
+                4BHK</b-form-radio
+              >
+              <b-form-radio
+                v-model="customerForm.requirement"
+                :aria-describedby="requirement"
+                name="requirement"
+                value="5bhk"
+              >
+                5BHK</b-form-radio
+              >
+            </b-form-group>
+            </b-row>
+          </b-row> -->
+
+          <!-- <b-row>
+            <b-row>
+            <b-form-group label="References:" v-slot="{ reference }">
+              <b-form-radio
+                v-model="customerForm.references"
+                :aria-describedby="reference"
+                name="reference"
+                value="paper"
+              >
+                Paper Advertisement</b-form-radio
+              >
+              <b-form-radio
+                v-model="customerForm.reference"
+                :aria-describedby="reference"
+                name="reference"
+                value="broker"
+              >
+                Broker</b-form-radio
+              >
+              <b-form-radio
+                v-model="customerForm.reference"
+                :aria-describedby="reference"
+                name="reference"
+                value="walkin"
+              >
+                Walk In</b-form-radio
+              >
+              <b-form-radio
+                v-model="customerForm.reference"
+                :aria-describedby="reference"
+                name="reference"
+                value="friend"
+              >
+                Friend Relative</b-form-radio
+              >
+              <b-form-radio
+                v-model="customerForm.reference"
+                :aria-describedby="reference"
+                name="reference"
+                value="hoarding"
+              >
+                Hoarding</b-form-radio
+              >
+            </b-form-group>
+            </b-row>
+          </b-row> -->
+
           <b-button type="submit" variant="primary">Submit</b-button>
           <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
         </b-form>

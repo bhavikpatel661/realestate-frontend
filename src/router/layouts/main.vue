@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-  <div :class="$style.container">
+  <div class="h-100" :class="$style.container">
     <NavBar />
     <slot />
   </div>

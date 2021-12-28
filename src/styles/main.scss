@@ -16,6 +16,17 @@ body {
   // background: #edf2f6;
   // display: flex;
   // min-height: 100vh;
+  // background: linear-gradient(
+  //   125deg,
+  //   #ecfcff 0%,
+  //   #ecfcff 40%,
+  //   #b2fcff calc(40% + 1px),
+  //   #b2fcff 60%,
+  //   #5edfff calc(60% + 1px),
+  //   #5edfff 72%,
+  //   #3e64ff calc(72% + 1px),
+  //   #3e64ff 100%
+  // );
 }
 
 #app {
@@ -23,9 +34,9 @@ body {
 }
 
 .form-group {
-  margin-bottom: 3%;
+  margin-bottom: 2rem;
   label {
-    margin-bottom: 2%;
+    margin-bottom: 1rem;
   }
 
   .custom-control-label {
@@ -49,6 +60,9 @@ body {
 .text-center {
   text-align: center !important;
 }
+.mr-2 {
+  margin-right: 2rem;
+}
 .mb-4 {
   margin-bottom: 1.5rem !important;
 }
@@ -67,5 +81,26 @@ body {
   border-radius: 1.25rem !important;
   box-shadow: 0rem 0.3125rem 0.3125rem 0rem rgb(82 63 105 / 5%);
   height: calc(100% - 30px);
+  & .card-body {
+    padding: 0px !important;
+    & .card-title {
+      padding: 1rem !important;
+      // background: #3d5afe;
+      // color: white;
+      margin: 0;
+      border-color: #f5f5f5;
+      position: relative;
+      background: transparent;
+      padding: 1.5rem 1.875rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #efefef;
+    }
+    & .card-content {
+      padding: 1rem;
+    }
+  }
 }
+
 // common class end

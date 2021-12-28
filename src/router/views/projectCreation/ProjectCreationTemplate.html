@@ -1,0 +1,70 @@
+<Layout>
+  <b-container id="projectCreation">
+    <b-card header="New Project">
+      <div class="card-content">
+        <b-row>
+          <b-col :lg="4">
+            <b-form-group label="Project Name:" label-for="projectName">
+              <b-form-input id="projectName" required></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <b-button type="button" variant="primary" @click="createNewWing"
+          >Add Wing</b-button
+        >
+        <b-row>
+          <b-col :lg="3" v-for="(wing,idx) in wings" :key="idx">
+            <b-card header="Wing">
+              <div class="card-content">
+                <b-row>
+                  <b-col>
+                    <b-form-group label="Name" label-for="wingName">
+                      <b-form-input
+                        id="wingName"
+                        v-model="wing.name"
+                        required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group label="Total Flats" label-for="totalFlats">
+                      <b-form-input
+                        id="totalFlats"
+                        v-model="wing.totalFlats"
+                        type="number"
+                        required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group label="Flat Type" label-for="type">
+                      <b-button
+                        pill
+                        :variant="wing.type == '2BHK' ? 'primary' :  'outline-secondary'"
+                        @click="setFlatType(wing,'2BHK')"
+                        >2 BHK</b-button
+                      >
+                      <b-button
+                        pill
+                        :variant="wing.type == '3BHK' ? 'primary' :  'outline-secondary'"
+                        @click="setFlatType(wing,'3BHK')"
+                        >3 BHK</b-button
+                      >
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+              </div>
+            </b-card>
+          </b-col>
+        </b-row>
+      </div>
+    </b-card>
+  </b-container>
+</Layout>

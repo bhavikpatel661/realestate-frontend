@@ -1,281 +1,207 @@
-<b-container id="addCustomer">
-  <div>
-    <b-card title="Add Customer">
-      <div id="customerForm">
-        <b-form @submit="onSubmit" @rest="onReset">
-          <b-row>
-            <b-col>
-              <b-form-group label="Customer Name:" label-for="name">
-                <b-form-input
-                  id="name"
-                  v-model="customerForm.name"
-                  placeholder="Enter name"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-            <b-col>
-              <b-form-group label="Date:" label-for="date">
-                <!-- <b-form-input
-                  id="date"
-                  v-model="customerForm.date"
-                  placeholder="DD/MM/YYYY"
-                  required
-                ></b-form-input> -->
-                <b-form-datepicker
-                  id="date"
-                  v-model="customerForm.date"
-                  class="mb-2"
-                  :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                ></b-form-datepicker>
-              </b-form-group>
-            </b-col>
-          </b-row>
-
-          <b-row>
-            <b-col>
-              <b-form-group label="Email ID:" label-for="emailId">
-                <b-form-input
-                  id="emailId"
-                  v-model="customerForm.email"
-                  placeholder="Enter eMail"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-
-            <b-col>
-              <b-form-group label="Contact No:" label-for="contactNo">
-                <b-form-input
-                  id="contactNo"
-                  v-model="customerForm.contact"
-                  placeholder="Enter contact number"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-          </b-row>
-
-          <b-row>
-            <b-col>
-              <b-form-group label="Address" label-for="address">
-                <b-form-textarea
-                  id="address"
-                  v-model="customerForm.address"
-                  placeholder="Enter Address..."
-                  rows="3"
-                  max-rows="6"
-                ></b-form-textarea>
-              </b-form-group>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col :lg="6">
-              <b-form-group label="Budget:" label-for="budget">
-                <b-form-input
-                  id="budget"
-                  v-model="customerForm.budget"
-                  placeholder="Enter budget"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </b-col>
-          </b-row>
-
-          <b-row>
-            <!-- <b-row> -->
-            <b-col :lg="4">
-              <b-form-group label="Occupation" v-slot="{ occupation }">
-                <b-form-radio
-                  v-model="customerForm.occupation"
-                  :aria-describedby="occupation"
-                  name="occupation"
-                  value="business"
-                >
-                  &nbsp;Business&nbsp;</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.occupation"
-                  :aria-describedby="occupation"
-                  name="occupation"
-                  value="servicePrivate"
-                >
-                  Private Service</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.occupation"
-                  :aria-describedby="occupation"
-                  name="occupation"
-                  value="govtPrivate"
-                >
-                  Govt. Service</b-form-radio
-                >
-              </b-form-group>
-            </b-col>
-
-            <b-col :lg="4">
-              <b-form-group label="Requirement:" v-slot="{ requirement }">
-                <b-form-radio
-                  v-model="customerForm.requirement"
-                  :aria-describedby="requirement"
-                  name="requirement"
-                  value="2bhk"
-                >
-                  2BHK</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.requirement"
-                  :aria-describedby="requirement"
-                  name="requirement"
-                  value="3bhk"
-                >
-                  4BHK</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.requirement"
-                  :aria-describedby="requirement"
-                  name="requirement"
-                  value="5bhk"
-                >
-                  5BHK</b-form-radio
-                >
-              </b-form-group>
-            </b-col>
-
-            <b-col :lg="4">
-              <b-form-group label="References:" v-slot="{ reference }">
-                <b-form-radio
-                  v-model="customerForm.references"
-                  :aria-describedby="reference"
-                  name="reference"
-                  value="paper"
-                >
-                  Paper Advertisement</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.reference"
-                  :aria-describedby="reference"
-                  name="reference"
-                  value="broker"
-                >
-                  Broker</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.reference"
-                  :aria-describedby="reference"
-                  name="reference"
-                  value="walkin"
-                >
-                  Walk In</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.reference"
-                  :aria-describedby="reference"
-                  name="reference"
-                  value="friend"
-                >
-                  Friend Relative</b-form-radio
-                >
-                <b-form-radio
-                  v-model="customerForm.reference"
-                  :aria-describedby="reference"
-                  name="reference"
-                  value="hoarding"
-                >
-                  Hoarding</b-form-radio
-                >
-              </b-form-group>
-            </b-col>
-
-            <!-- </b-row> -->
-          </b-row>
-
-          <!-- <b-row>
+<Layout>
+  <b-container id="addCustomer">
+    <div>
+      <b-card header="Add Customer">
+        <div class="card-content" id="customerForm">
+          <b-form @submit="onSubmit" @rest="onReset">
             <b-row>
-            <b-form-group label="Requirement:" v-slot="{ requirement }">
-              <b-form-radio
-                v-model="customerForm.requirement"
-                :aria-describedby="requirement"
-                name="requirement"
-                value="2bhk"
-              >
-                2BHK</b-form-radio
-              >
-              <b-form-radio
-                v-model="customerForm.requirement"
-                :aria-describedby="requirement"
-                name="requirement"
-                value="3bhk"
-              >
-                4BHK</b-form-radio
-              >
-              <b-form-radio
-                v-model="customerForm.requirement"
-                :aria-describedby="requirement"
-                name="requirement"
-                value="5bhk"
-              >
-                5BHK</b-form-radio
-              >
-            </b-form-group>
+              <b-col>
+                <b-form-group label="Customer Name:" label-for="name">
+                  <b-form-input
+                    id="name"
+                    v-model="customerForm.name"
+                    placeholder="Enter name"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+              <b-col>
+                <b-form-group label="Date:" label-for="date">
+                  <b-form-datepicker
+                    id="date"
+                    v-model="customerForm.date"
+                    class="mb-2"
+                    :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                  ></b-form-datepicker>
+                </b-form-group>
+              </b-col>
             </b-row>
-          </b-row> -->
 
-          <!-- <b-row>
             <b-row>
-            <b-form-group label="References:" v-slot="{ reference }">
-              <b-form-radio
-                v-model="customerForm.references"
-                :aria-describedby="reference"
-                name="reference"
-                value="paper"
-              >
-                Paper Advertisement</b-form-radio
-              >
-              <b-form-radio
-                v-model="customerForm.reference"
-                :aria-describedby="reference"
-                name="reference"
-                value="broker"
-              >
-                Broker</b-form-radio
-              >
-              <b-form-radio
-                v-model="customerForm.reference"
-                :aria-describedby="reference"
-                name="reference"
-                value="walkin"
-              >
-                Walk In</b-form-radio
-              >
-              <b-form-radio
-                v-model="customerForm.reference"
-                :aria-describedby="reference"
-                name="reference"
-                value="friend"
-              >
-                Friend Relative</b-form-radio
-              >
-              <b-form-radio
-                v-model="customerForm.reference"
-                :aria-describedby="reference"
-                name="reference"
-                value="hoarding"
-              >
-                Hoarding</b-form-radio
-              >
-            </b-form-group>
+              <b-col>
+                <b-form-group label="Email ID:" label-for="emailId">
+                  <b-form-input
+                    id="emailId"
+                    v-model="customerForm.email"
+                    placeholder="Enter eMail"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+
+              <b-col>
+                <b-form-group label="Contact No:" label-for="contactNo">
+                  <b-form-input
+                    id="contactNo"
+                    v-model="customerForm.contact"
+                    placeholder="Enter contact number"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
             </b-row>
-          </b-row> -->
 
-          <b-button type="submit" variant="primary">Submit</b-button>
-          <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
-        </b-form>
+            <b-row>
+              <b-col>
+                <b-form-group label="Address" label-for="address">
+                  <b-form-textarea
+                    id="address"
+                    v-model="customerForm.address"
+                    placeholder="Enter Address..."
+                    rows="3"
+                    max-rows="6"
+                  ></b-form-textarea>
+                </b-form-group>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col :lg="6">
+                <b-form-group label="Budget:" label-for="budget">
+                  <b-form-input
+                    id="budget"
+                    v-model="customerForm.budget"
+                    placeholder="Enter budget"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+            </b-row>
 
-        <b-card class="mt-3" header="Form Data Result">
-          <pre class="m-0">{{ customerForm }}</pre>
-        </b-card>
-      </div>
-    </b-card>
-  </div>
-</b-container>
+            <b-row>
+              <b-col :lg="4">
+                <b-form-group label="Occupation" v-slot="{ occupation }">
+                  <b-form-radio
+                    v-model="customerForm.occupation"
+                    :aria-describedby="occupation"
+                    name="occupation"
+                    value="business"
+                  >
+                    &nbsp;Business&nbsp;</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.occupation"
+                    :aria-describedby="occupation"
+                    name="occupation"
+                    value="servicePrivate"
+                  >
+                    Private Service</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.occupation"
+                    :aria-describedby="occupation"
+                    name="occupation"
+                    value="govtPrivate"
+                  >
+                    Govt. Service</b-form-radio
+                  >
+                </b-form-group>
+              </b-col>
+
+              <b-col :lg="4">
+                <b-form-group label="Requirement:" v-slot="{ requirement }">
+                  <b-form-radio
+                    v-model="customerForm.requirement"
+                    :aria-describedby="requirement"
+                    name="requirement"
+                    value="2bhk"
+                  >
+                    2BHK</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.requirement"
+                    :aria-describedby="requirement"
+                    name="requirement"
+                    value="3bhk"
+                  >
+                    4BHK</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.requirement"
+                    :aria-describedby="requirement"
+                    name="requirement"
+                    value="5bhk"
+                  >
+                    5BHK</b-form-radio
+                  >
+                </b-form-group>
+              </b-col>
+
+              <b-col :lg="4">
+                <b-form-group label="References:" v-slot="{ reference }">
+                  <b-form-radio
+                    v-model="customerForm.references"
+                    :aria-describedby="reference"
+                    name="reference"
+                    value="paper"
+                  >
+                    Paper Advertisement</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.reference"
+                    :aria-describedby="reference"
+                    name="reference"
+                    value="broker"
+                  >
+                    Broker</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.reference"
+                    :aria-describedby="reference"
+                    name="reference"
+                    value="walkin"
+                  >
+                    Walk In</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.reference"
+                    :aria-describedby="reference"
+                    name="reference"
+                    value="friend"
+                  >
+                    Friend Relative</b-form-radio
+                  >
+                  <b-form-radio
+                    v-model="customerForm.reference"
+                    :aria-describedby="reference"
+                    name="reference"
+                    value="hoarding"
+                  >
+                    Hoarding</b-form-radio
+                  >
+                </b-form-group>
+              </b-col>
+            </b-row>
+
+            <b-button class="mr-2" type="submit" variant="primary"
+              >Save</b-button
+            >
+            <b-button
+              class="mr-2"
+              type="button"
+              variant="primary"
+              v-if="customerId == -1"
+              @click="book"
+              >Save & Add Bookings</b-button
+            >
+
+            <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
+          </b-form>
+
+          <b-card class="mt-3" header="Form Data Result">
+            <pre class="m-0">{{ customerForm }}</pre>
+          </b-card>
+        </div>
+      </b-card>
+    </div>
+  </b-container>
+</Layout>

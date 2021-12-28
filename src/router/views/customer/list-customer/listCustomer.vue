@@ -54,18 +54,7 @@ export default {
         'Are you sure you want to convert to customer.'
       )
       if (hasConfirmed) {
-        const data = {
-          customerId: customerId,
-          data: {
-            stage: 'customer',
-          },
-        }
-        const componentInstance = this
-        this.$store
-          .dispatch('customers/updateCustomer', data)
-          .then((resp) =>
-            componentInstance.$store.dispatch('customers/getCustomerList')
-          )
+        this.$router.push(`/home/customer/booking/${customerId}`)
       }
     },
     editCustomer(customerId) {

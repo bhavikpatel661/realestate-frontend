@@ -1,0 +1,127 @@
+<Layout>
+  <b-container id="bookingTemplate">
+    <b-card header="Customer Details">
+      <div class="card-content">
+        <b-row>
+          <b-col>
+            <label>Name : &nbsp;</label>
+            <label>{{customerDetails.name}}</label>
+          </b-col>
+          <b-col>
+            <label>Email : &nbsp;</label>
+            <label>{{customerDetails.email}}</label>
+          </b-col>
+        </b-row>
+
+        <b-row>
+          <b-col>
+            <label>Address : &nbsp;</label>
+            <label>{{customerDetails.address}}</label>
+          </b-col>
+        </b-row>
+      </div>
+    </b-card>
+
+    <b-card header="Booking Details">
+      <div class="card-content">
+        <b-row>
+          <b-col :lg="4">
+            <b-form-group label="PAN Number:" label-for="panNumber">
+              <b-form-input
+                id="panNumber"
+                v-model="bookingForm.pan"
+                placeholder="PAN Number"
+                required
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <b-row>
+          <b-col :lg="4">
+            <b-form-group label="Aadhar Number:" label-for="aadharNumber">
+              <b-form-input
+                id="aadharNumber"
+                v-model="bookingForm.aadhar"
+                placeholder="AADHAR Number"
+                required
+                v-on:keyup="formatAadhar"
+                max="20"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <b-row>
+          <b-col :lg="4">
+            <b-form-group
+              label="Current Residence Address:"
+              label-for="residenceAddress"
+            >
+              <b-form-textarea
+                id="residenceAddress"
+                v-model="bookingForm.residence"
+                placeholder="Enter Residence Address..."
+                rows="3"
+                max-rows="6"
+              ></b-form-textarea>
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <b-row>
+          <b-col :lg="4">
+            <b-form-group label="Project Name:" label-for="projectName">
+              <b-form-select
+                v-model="bookingForm.project"
+                :options="projectName"
+                id="projectName"
+              ></b-form-select>
+            </b-form-group>
+          </b-col>
+
+          <b-col :lg="4">
+            <b-form-group label="Flat No:" label-for="flatNo">
+              <b-form-input
+                id="flatNo"
+                v-model="bookingForm.flat"
+                placeholder="Flat No"
+                required
+                type="number"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+
+          <b-col :lg="4">
+            <b-form-group label="Building Wing:" label-for="wing">
+              <b-form-select
+                v-model="bookingForm.wing"
+                :options="wing"
+                id="wing"
+              ></b-form-select>
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <b-row>
+          <b-col :lg="4">
+            <b-form-group
+              label="Total Amount (Amount with GST, Registration & Stampduty)"
+              label-for="amount"
+            >
+              <b-form-input
+                id="flatNo"
+                v-model="bookingForm.amount"
+                placeholder="Total Amount"
+                required
+                type="number"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <b-button type="submit" variant="primary">Submit</b-button>
+      </div>
+    </b-card>
+  </b-container>
+</Layout>

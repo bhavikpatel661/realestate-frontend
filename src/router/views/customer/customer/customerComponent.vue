@@ -3,8 +3,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import _ from 'lodash'
+import Layout from '@layouts/main.vue'
+
 export default {
   name: 'Customer',
+  components: {
+    Layout,
+  },
   data() {
     return {
       customerId: -1,
@@ -41,7 +46,7 @@ export default {
     }
   },
   methods: {
-    onSubmit(event) {
+    onSubmit(event, booking) {
       event.preventDefault()
       const compInstance = this
 
@@ -59,9 +64,18 @@ export default {
         this.$store
           .dispatch('customers/createCustomer', this.customerForm)
           .then((data) => {
-            compInstance.$router.push('/home')
+            if (booking) {
+              compInstance.$router.push(
+                `/home/customer/booking/${data.customer.id}`
+              )
+            } else {
+              compInstance.$router.push('/home')
+            }
           })
       }
+    },
+    book(event) {
+      this.onSubmit(event, true)
     },
     onReset(event) {
       event.preventDefault()

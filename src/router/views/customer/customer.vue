@@ -1,5 +1,4 @@
 <script>
-import Layout from '@layouts/main.vue'
 import { authMethods, authComputed } from '@/state/helpers'
 import ListCustomer from './list-customer/listCustomer.vue'
 
@@ -7,7 +6,7 @@ export default {
   page: {
     title: 'Customer',
   },
-  components: { Layout, ListCustomer },
+  components: { ListCustomer },
   data() {
     return {
       customerStageFilter: 'lead',
@@ -48,10 +47,10 @@ export default {
 </script>
 
 <template>
-  <Layout>
-    <b-container class="h-100">
-      <div class="card">
-        <div class="card-body align-items-center justify-content-between">
+  <b-container class="h-100 mt-6">
+    <div class="card">
+      <div class="card-body align-items-center justify-content-between">
+        <div class="card-content">
           <b-row>
             <b-col class="col-lg-3">
               <b-form-group label="Customer Type:" label-for="customerType">
@@ -103,8 +102,8 @@ export default {
           </b-row>
         </div>
       </div>
-    </b-container>
-  </Layout>
+    </div>
+  </b-container>
 </template>
 
 <style scoped>

@@ -33,7 +33,7 @@ export default {
                 moved.</p
               >
               <div>
-                <a class="btn btn-primary" href="./index.html">Back to Home</a>
+                <a class="btn btn-primary" href="home">Back to Home</a>
               </div>
             </div>
           </div>

@@ -28,6 +28,18 @@ export default [
     props: (route) => ({ user: store.state.auth.currentUser || {} }),
   },
   {
+    path: '/projectCreation',
+    name: 'projectCreation',
+    component: () =>
+      lazyLoadView(
+        import('@views/projectCreation/ProjectCreationComponent.vue')
+      ),
+    meta: {
+      authRequired: true,
+    },
+    props: (route) => ({ user: store.state.auth.currentUser || {} }),
+  },
+  {
     path: '/home/customer',
     name: 'customer',
     component: () =>
@@ -37,6 +49,17 @@ export default [
     },
     props: (route) => ({ user: store.state.auth.currentUser || {} }),
   },
+  {
+    path: '/home/customer/booking/:customerId',
+    name: 'booking',
+    component: () =>
+      import('@/router/views/customer/booking/BookingComponent.vue'),
+    meta: {
+      authRequired: true,
+    },
+    props: (route) => ({ user: store.state.auth.currentUser || {} }),
+  },
+
   {
     path: '/profile/:username',
     name: 'username-profile',

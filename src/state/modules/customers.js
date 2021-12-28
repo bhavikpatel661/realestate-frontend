@@ -64,10 +64,13 @@ export const actions = {
       })
   },
 
-  createCustomer({ commit }, payload) {
+  createCustomer({ commit, resolve }, payload) {
     commit(`CREATE_CUSTOMER_PRE`)
     return Customers.createCustomer(payload)
-      .then(({ data }) => commit(`CREATE_CUSTOMER_SUCCESS`, data))
+      .then(({ data }) => {
+        commit(`CREATE_CUSTOMER_SUCCESS`, data)
+        return data
+      })
       .catch((error) => {
         commit(`CREATE_CUSTOMER_FAILURE`)
       })

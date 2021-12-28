@@ -45,6 +45,13 @@
         <b-button
           size="sm"
           variant="outline-primary"
+          @click="changeCustomerType(arrCustomers.item.id)"
+          >Not a Customer</b-button
+        >
+        &nbsp;
+        <b-button
+          size="sm"
+          variant="outline-primary"
           @click="viewTimeline(arrCustomers.item.id)"
           >Timeline</b-button
         >
